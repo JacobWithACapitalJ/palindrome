@@ -28,7 +28,8 @@ func main() {
 			log.Fatal(ERR_PIPED_INPUT)
 		}
 	} else {
-		parsedStrings = handleArgs(os.Args[1:])
+		// handle arguments passed in via the command line
+		parsedStrings = os.Args[1:]
 	}
 
 	for _, str := range parsedStrings {
@@ -57,13 +58,6 @@ func handlePiped(stdIn io.Reader) ([]string, error) {
 		}
 	}
 	return output, nil
-}
-
-func handleArgs(args []string) []string {
-	for _, v := range args {
-		logResult(v, isPalindrome(v))
-	}
-	return args
 }
 
 func isPalindrome(str string) bool {
